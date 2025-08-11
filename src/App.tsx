@@ -29,7 +29,7 @@ export function App() {
   ]);
 
   const [titulo, setTitulo] = useState<string>();
-  const [valor = 0, setValor] = useState<number>();
+  const [valor = 0, setValor] = useState<number | undefined>(undefined);
 
   const [taxaPos = 0, setTaxaPos] = useState<number>();
 
@@ -39,16 +39,16 @@ export function App() {
   const [aliquotaNacionalShield = 0, setAliquotaNacionalShield] =
     useState<number>();
 
-  function addCusto(event) {
+  function addCusto(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     console.log(event);
     event.preventDefault();
     setCustos([...custos, { titulo: titulo, valor: Number(valor) }]);
 
     setTitulo("");
-    setValor(" ");
+    setValor(undefined);
   }
 
-  function percentFormmat(t: undefined) {
+  function percentFormmat(t: number) {
     const valor = new Intl.NumberFormat("pt-br", {
       style: "percent",
       maximumFractionDigits: 2,
@@ -69,7 +69,7 @@ export function App() {
     faturamentoMensal && faturamentoMensal * (aliquotaNacional / 100);
 
   const custosTotais = custos.reduce(
-    (acc, currentValue) => acc + currentValue.valor,
+    (acc, currentValue) => acc + (currentValue.valor ?? 0),
     0
   );
   const faturamentoWithShield = faturamentoMensal - custosTotais;
