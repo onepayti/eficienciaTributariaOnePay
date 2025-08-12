@@ -486,11 +486,11 @@ export function App() {
                   onChange={(e) => setSegmento(e.target.value)}
                 >
                   <option value={""}></option>
-                  <option value="Comércio"> Comércio</option>
-                  <option value="Indústria"> Indústria</option>
-                  <option value="Serviços I"> Serviços I</option>
-                  <option value="Serviços II"> Serviços II</option>
-                  <option value="Serviços III"> Serviços III</option>
+                  <option value="Comércio"> Anexo 1</option>
+                  <option value="Indústria"> Anexo 2</option>
+                  <option value="Serviços I"> Anexo 3</option>
+                  <option value="Serviços II"> Anexo 4</option>
+                  <option value="Serviços III"> Anexo 5</option>
                 </select>
               </div>
             </div>
