@@ -32,6 +32,7 @@ export function App() {
   const [valor = 0, setValor] = useState<number | undefined>(undefined);
 
   const [taxaPos = 0, setTaxaPos] = useState<number>();
+  const [taxaPosShield = 0, setTaxaPosShield] = useState<number>();
 
   const [segmento, setSegmento] = useState<string>();
 
@@ -88,7 +89,7 @@ export function App() {
     faturamentoMensal -
     custosTotais -
     impostoBruto2 -
-    faturamentoCartao * (Number(taxaPos) / 100);
+    faturamentoCartao * (Number(taxaPosShield) / 100);
   const lucroPercent =
     ((lucroComEficiencia - lucroSemEficiencia) / lucroSemEficiencia) * 100;
 
@@ -676,14 +677,14 @@ export function App() {
                       <Input
                         placeholder="Digita Aqui"
                         className="max-w-20 h-6"
-                        value={taxaPos}
-                        onBlur={(e) => (e.target.value = taxaPos + "%")}
+                        value={taxaPosShield}
+                        onBlur={(e) => (e.target.value = taxaPosShield + "%")}
                         onChange={(e) => {
                           console.log(e);
                           const numericValue = Number(
                             e.target.value.replace(/[^a-zA-Z0-9\s]/g, "")
                           );
-                          setTaxaPos(numericValue);
+                          setTaxaPosShield(numericValue);
                         }}
                       ></Input>
                     </div>
