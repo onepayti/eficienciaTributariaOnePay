@@ -481,9 +481,8 @@ export function App() {
                   Anexo do Simples Nacional:
                 </h1>
                 <select
-                  className=" max-w-30   bg-blue-50 rounded-md "
+                  className=" max-w-30 bg-amber-50  focus:text-black   rounded-md "
                   name="select"
-                  value={""}
                   onChange={(e) => setSegmento(e.target.value)}
                 >
                   <option value={""}></option>
