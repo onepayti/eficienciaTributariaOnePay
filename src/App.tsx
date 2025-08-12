@@ -86,8 +86,7 @@ export function App() {
     faturamentoCartao * (Number(taxaPos) / 100);
 
   const lucroComEficiencia =
-    faturamentoMensal -
-    custosTotais -
+    faturamentoWithShield -
     impostoBruto2 -
     faturamentoCartao * (Number(taxaPosShield) / 100);
   const lucroPercent =
@@ -482,12 +481,12 @@ export function App() {
                   Anexo do Simples Nacional:
                 </h1>
                 <select
-                  className="text-neutral-400 "
+                  className=" max-w-30   bg-blue-50 rounded-md "
                   name="select"
+                  value={""}
                   onChange={(e) => setSegmento(e.target.value)}
                 >
-                  <option value=""> </option>
-
+                  <option value={""}></option>
                   <option value="Comércio"> Comércio</option>
                   <option value="Indústria"> Indústria</option>
                   <option value="Serviços I"> Serviços I</option>
