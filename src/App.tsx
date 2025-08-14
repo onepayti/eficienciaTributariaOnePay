@@ -10,7 +10,7 @@ import {
 import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
 import Logo from "./assets/Logoredonda.png";
-import LogoShield from "./assets/LogoredondaShield.png";
+import LogoONEPAY from "./assets/LogoredondaOne.png.png";
 interface CustoType {
   titulo: string | undefined;
   valor: number | null;
@@ -32,12 +32,12 @@ export function App() {
   const [valor = 0, setValor] = useState<number | undefined>(undefined);
 
   const [taxaPos = 0, setTaxaPos] = useState<number>();
-  const [taxaPosShield = 0, setTaxaPosShield] = useState<number>();
+  const [taxaPosONEPAY = 0, setTaxaPosONEPAY] = useState<number>();
 
   const [segmento, setSegmento] = useState<string>();
 
   const [aliquotaNacional = 0, setAliquotaNacional] = useState<number>();
-  const [aliquotaNacionalShield = 0, setAliquotaNacionalShield] =
+  const [aliquotaNacionalONEPAY = 0, setAliquotaNacionalONEPAY] =
     useState<number>();
 
   function addCusto(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -73,11 +73,11 @@ export function App() {
     (acc, currentValue) => acc + (currentValue.valor ?? 0),
     0
   );
-  const faturamentoWithShield = faturamentoMensal - custosTotais;
+  const faturamentoWithONEPAY = faturamentoMensal - custosTotais;
 
   const impostoBruto2 =
-    faturamentoWithShield &&
-    faturamentoWithShield * (aliquotaNacionalShield / 100);
+    faturamentoWithONEPAY &&
+    faturamentoWithONEPAY * (aliquotaNacionalONEPAY / 100);
 
   const lucroSemEficiencia =
     faturamentoMensal -
@@ -86,9 +86,9 @@ export function App() {
     faturamentoCartao * (Number(taxaPos) / 100);
 
   const lucroComEficiencia =
-    faturamentoWithShield -
+    faturamentoWithONEPAY -
     impostoBruto2 -
-    faturamentoCartao * (Number(taxaPosShield) / 100);
+    faturamentoCartao * (Number(taxaPosONEPAY) / 100);
   const lucroPercent =
     ((lucroComEficiencia - lucroSemEficiencia) / lucroSemEficiencia) * 100;
 
@@ -268,198 +268,198 @@ export function App() {
   useEffect(() => {
     switch (segmento) {
       case "Comércio":
-        if (faturamentoWithShield * 12 >= 3600000) {
+        if (faturamentoWithONEPAY * 12 >= 3600000) {
           fee = 19;
         }
         if (
-          faturamentoWithShield * 12 >= 1800000 &&
-          faturamentoWithShield * 12 < 3600000
+          faturamentoWithONEPAY * 12 >= 1800000 &&
+          faturamentoWithONEPAY * 12 < 3600000
         ) {
           fee = 14.3;
         }
         if (
-          faturamentoWithShield * 12 >= 720000 &&
-          faturamentoWithShield * 12 < 1800000
+          faturamentoWithONEPAY * 12 >= 720000 &&
+          faturamentoWithONEPAY * 12 < 1800000
         ) {
           fee = 10.7;
         }
         if (
-          faturamentoWithShield * 12 >= 360000 &&
-          faturamentoWithShield * 12 < 720000
+          faturamentoWithONEPAY * 12 >= 360000 &&
+          faturamentoWithONEPAY * 12 < 720000
         ) {
           fee = 9.5;
         }
         if (
-          faturamentoWithShield * 12 >= 180000 &&
-          faturamentoWithShield * 12 < 360000
+          faturamentoWithONEPAY * 12 >= 180000 &&
+          faturamentoWithONEPAY * 12 < 360000
         ) {
           fee = 7.3;
         }
         if (
-          faturamentoWithShield * 12 >= 0 &&
-          faturamentoWithShield * 12 < 180000
+          faturamentoWithONEPAY * 12 >= 0 &&
+          faturamentoWithONEPAY * 12 < 180000
         ) {
           fee = 4;
         }
-        return setAliquotaNacionalShield(fee);
+        return setAliquotaNacionalONEPAY(fee);
       case "Indústria":
-        if (faturamentoWithShield * 12 >= 3600000) {
+        if (faturamentoWithONEPAY * 12 >= 3600000) {
           fee = 30;
         }
         if (
-          faturamentoWithShield * 12 >= 1800000 &&
-          faturamentoWithShield * 12 < 3600000
+          faturamentoWithONEPAY * 12 >= 1800000 &&
+          faturamentoWithONEPAY * 12 < 3600000
         ) {
           fee = 14.7;
         }
         if (
-          faturamentoWithShield * 12 >= 720000 &&
-          faturamentoWithShield * 12 < 1800000
+          faturamentoWithONEPAY * 12 >= 720000 &&
+          faturamentoWithONEPAY * 12 < 1800000
         ) {
           fee = 11.2;
         }
         if (
-          faturamentoWithShield * 12 >= 360000 &&
-          faturamentoWithShield * 12 < 720000
+          faturamentoWithONEPAY * 12 >= 360000 &&
+          faturamentoWithONEPAY * 12 < 720000
         ) {
           fee = 10;
         }
         if (
-          faturamentoWithShield * 12 >= 180000 &&
-          faturamentoWithShield * 12 < 360000
+          faturamentoWithONEPAY * 12 >= 180000 &&
+          faturamentoWithONEPAY * 12 < 360000
         ) {
           fee = 7.8;
         }
         if (
-          faturamentoWithShield * 12 >= 0 &&
-          faturamentoWithShield * 12 < 180000
+          faturamentoWithONEPAY * 12 >= 0 &&
+          faturamentoWithONEPAY * 12 < 180000
         ) {
           fee = 4.5;
         }
-        return setAliquotaNacionalShield(fee);
+        return setAliquotaNacionalONEPAY(fee);
 
       case "Serviços I":
-        if (faturamentoWithShield * 12 >= 3600000) {
+        if (faturamentoWithONEPAY * 12 >= 3600000) {
           fee = 33;
         }
         if (
-          faturamentoWithShield * 12 >= 1800000 &&
-          faturamentoWithShield * 12 < 3600000
+          faturamentoWithONEPAY * 12 >= 1800000 &&
+          faturamentoWithONEPAY * 12 < 3600000
         ) {
           fee = 21;
         }
         if (
-          faturamentoWithShield * 12 >= 720000 &&
-          faturamentoWithShield * 12 < 1800000
+          faturamentoWithONEPAY * 12 >= 720000 &&
+          faturamentoWithONEPAY * 12 < 1800000
         ) {
           fee = 16;
         }
         if (
-          faturamentoWithShield * 12 >= 360000 &&
-          faturamentoWithShield * 12 < 720000
+          faturamentoWithONEPAY * 12 >= 360000 &&
+          faturamentoWithONEPAY * 12 < 720000
         ) {
           fee = 13.5;
         }
         if (
-          faturamentoWithShield * 12 >= 180000 &&
-          faturamentoWithShield * 12 < 360000
+          faturamentoWithONEPAY * 12 >= 180000 &&
+          faturamentoWithONEPAY * 12 < 360000
         ) {
           fee = 11.2;
         }
         if (
-          faturamentoWithShield * 12 >= 0 &&
-          faturamentoWithShield * 12 < 180000
+          faturamentoWithONEPAY * 12 >= 0 &&
+          faturamentoWithONEPAY * 12 < 180000
         ) {
           fee = 6;
         }
-        return setAliquotaNacionalShield(fee);
+        return setAliquotaNacionalONEPAY(fee);
 
       case "Serviços II":
-        if (faturamentoWithShield * 12 >= 3600000) {
+        if (faturamentoWithONEPAY * 12 >= 3600000) {
           fee = 33;
         }
         if (
-          faturamentoWithShield * 12 >= 1800000 &&
-          faturamentoWithShield * 12 < 3600000
+          faturamentoWithONEPAY * 12 >= 1800000 &&
+          faturamentoWithONEPAY * 12 < 3600000
         ) {
           fee = 22;
         }
         if (
-          faturamentoWithShield * 12 >= 720000 &&
-          faturamentoWithShield * 12 < 1800000
+          faturamentoWithONEPAY * 12 >= 720000 &&
+          faturamentoWithONEPAY * 12 < 1800000
         ) {
           fee = 14;
         }
         if (
-          faturamentoWithShield * 12 >= 360000 &&
-          faturamentoWithShield * 12 < 720000
+          faturamentoWithONEPAY * 12 >= 360000 &&
+          faturamentoWithONEPAY * 12 < 720000
         ) {
           fee = 10.2;
         }
         if (
-          faturamentoWithShield * 12 >= 180000 &&
-          faturamentoWithShield * 12 < 360000
+          faturamentoWithONEPAY * 12 >= 180000 &&
+          faturamentoWithONEPAY * 12 < 360000
         ) {
           fee = 9;
         }
         if (
-          faturamentoWithShield * 12 >= 0 &&
-          faturamentoWithShield * 12 < 180000
+          faturamentoWithONEPAY * 12 >= 0 &&
+          faturamentoWithONEPAY * 12 < 180000
         ) {
           fee = 4.5;
         }
-        return setAliquotaNacionalShield(fee);
+        return setAliquotaNacionalONEPAY(fee);
 
       case "Serviços III":
-        if (faturamentoWithShield * 12 >= 3600000) {
+        if (faturamentoWithONEPAY * 12 >= 3600000) {
           fee = 30.5;
         }
         if (
-          faturamentoWithShield * 12 >= 1800000 &&
-          faturamentoWithShield * 12 < 3600000
+          faturamentoWithONEPAY * 12 >= 1800000 &&
+          faturamentoWithONEPAY * 12 < 3600000
         ) {
           fee = 23;
         }
         if (
-          faturamentoWithShield * 12 >= 720000 &&
-          faturamentoWithShield * 12 < 1800000
+          faturamentoWithONEPAY * 12 >= 720000 &&
+          faturamentoWithONEPAY * 12 < 1800000
         ) {
           fee = 20.5;
         }
         if (
-          faturamentoWithShield * 12 >= 360000 &&
-          faturamentoWithShield * 12 < 720000
+          faturamentoWithONEPAY * 12 >= 360000 &&
+          faturamentoWithONEPAY * 12 < 720000
         ) {
           fee = 19.5;
         }
         if (
-          faturamentoWithShield * 12 >= 180000 &&
-          faturamentoWithShield * 12 < 360000
+          faturamentoWithONEPAY * 12 >= 180000 &&
+          faturamentoWithONEPAY * 12 < 360000
         ) {
           fee = 18;
         }
         if (
-          faturamentoWithShield * 12 >= 0 &&
-          faturamentoWithShield * 12 < 180000
+          faturamentoWithONEPAY * 12 >= 0 &&
+          faturamentoWithONEPAY * 12 < 180000
         ) {
           fee = 15.5;
         }
-        return setAliquotaNacionalShield(fee);
+        return setAliquotaNacionalONEPAY(fee);
 
       default:
         console.log("error");
         break;
     }
-  }, [faturamentoWithShield, segmento]);
+  }, [faturamentoWithONEPAY, segmento]);
   return (
     <>
       <div className="">
-        <div className="flex border-0 bg-slate-900 pl-20   max-sm:justify-center max-sm:pl-0">
-          <img className="w-50 max-sm:w-30  " src={LogoShield}></img>
+        <div className="flex border-0 bg-gradient-to-r from-[#1b4c7f] to-[#001937] pl-20   max-sm:justify-center max-sm:pl-0">
+          <img className="w-40 max-sm:w-30  " src={LogoONEPAY}></img>
         </div>
-        <div className="w-full mt-[-6rem] max-sm:mt-0 bg-slate-900 min-h-screen p-5 grid place-content-center max-sm:max-w-full ">
+        <div className="w-full mt-[-6rem] max-sm:mt-0 bg-gradient-to-r from-[#1b4c7f] to-[#001937] min-h-screen p-5 grid place-content-center max-sm:max-w-full ">
           <h1 className="text-amber-50 text-center scroll-m-20  pb-2 text-3xl max-sm:text-2xl font-semibold tracking-tight  ">
-            INTELIGÊNCIA TRIBUTARIA SHIELD
+            INTELIGÊNCIA TRIBUTARIA ONEPAY
           </h1>
           <div className=" xl:grid xl:grid-cols-2 sm:grid-cols-1 md:grid-cols-1  ">
             <div className="w-full mt-10 mb-10 grid place-content-center ">
@@ -468,7 +468,7 @@ export function App() {
                   Anexo do Simples Nacional:
                 </h1>
                 <select
-                  className=" max-w-30 bg-amber-50  focus:text-black   rounded-md "
+                  className=" max-w-30 bg-white focus:text-black   rounded-md "
                   name="select"
                   onChange={(e) => setSegmento(e.target.value)}
                 >
@@ -493,7 +493,7 @@ export function App() {
                   <div className="flex mb-5 justify-between items-center  gap-2 max-sm:text-[0.85rem]  ">
                     <p>Faturamento mensal declarado:</p>
                     <Input
-                      className="max-w-30 bg-blue-950 text-amber-50 max-sm:text-[0.85rem]"
+                      className="max-w-30 bg-gradient-to-r from-[#1b4c7f] to-[#001937] text-amber-50 max-sm:text-[0.85rem]"
                       placeholder="Digite Aqui"
                       type="text"
                       value={formattedNumber(faturamentoMensal)}
@@ -512,9 +512,9 @@ export function App() {
                     </span>
                   </div>
                   <div className="flex justify-between items-center gap-5 mb-5">
-                    <p>Faturamento mensal cartão:</p>
+                    <p>Faturamento mensal em cartão:</p>
                     <Input
-                      className="max-w-30 bg-blue-950 text-amber-50 max-sm:text-[0.85rem]"
+                      className="max-w-30 bg-gradient-to-r from-[#1b4c7f] to-[#001937] text-amber-50 max-sm:text-[0.85rem]"
                       placeholder="Digite Aqui "
                       value={formattedNumber(faturamentoCartao)}
                       onChange={(e) => {
@@ -536,7 +536,7 @@ export function App() {
                   <div>
                     <div className="flex place-content-between gap-4 place-items-center mt-4 ">
                       <Input
-                        className=" bg-blue-950 text-amber-50 placeholder:text-amber-50 max-sm:text-[0.85rem]"
+                        className=" bg-gradient-to-r from-[#1b4c7f] to-[#001937] text-amber-50 placeholder:text-amber-50 max-sm:text-[0.85rem]"
                         placeholder="Digite Aqui os recebedores"
                         name="texto"
                         type="text"
@@ -544,7 +544,7 @@ export function App() {
                         onChange={(e) => setTitulo(e.target.value)}
                       ></Input>
                       <Input
-                        className=" bg-blue-950 text-amber-50 placeholder:text-amber-50 max-sm:text-[0.85rem]"
+                        className=" bg-gradient-to-r from-[#1b4c7f] to-[#001937] text-amber-50 placeholder:text-amber-50 max-sm:text-[0.85rem]"
                         placeholder="Digite Aqui o valor"
                         name="custo"
                         type="text"
@@ -557,7 +557,7 @@ export function App() {
                         }}
                       ></Input>
                       <Button
-                        className="w-0 h-7 bg-blue-950"
+                        className="w-0 h-7 bg-gradient-to-r from-[#1b4c7f] to-[#001937]"
                         type="button"
                         onClick={(event) => addCusto(event)}
                       >
@@ -586,7 +586,7 @@ export function App() {
                     <div className="flex place-content-between mt-10 mb-4">
                       <p>Taxas da maquininha em cartão:</p>
                       <Input
-                        className="max-w-20 bg-blue-950 text-amber-50 placeholder:text-amber-50 max-sm:text-[0.85rem]"
+                        className="max-w-20 bg-gradient-to-r from-[#1b4c7f] to-[#001937] text-amber-50 placeholder:text-amber-50 max-sm:text-[0.85rem]"
                         placeholder="Digita Aqui"
                         type=""
                         value={taxaPos}
@@ -612,7 +612,7 @@ export function App() {
                   </div>
                 </CardContent>
                 <CardFooter className="w-full grid place-content-center">
-                  <img className="w-40" src={Logo} />
+                  <img className="w-50" src={Logo} />
                 </CardFooter>
               </Card>
             </div>
@@ -627,11 +627,11 @@ export function App() {
                 <CardContent className="">
                   <div className="flex gap-10 mb-5 place-items-center">
                     <p>Faturamento mensal declarado:</p>
-                    <span>{formattedNumber(faturamentoWithShield)}</span>
+                    <span>{formattedNumber(faturamentoWithONEPAY)}</span>
                   </div>
                   <div className="flex gap-14 mb-5 place-items-center">
                     <p>Alíquota do Simples Nacional:</p>
-                    <span>{percentFormmat(aliquotaNacionalShield)}</span>
+                    <span>{percentFormmat(aliquotaNacionalONEPAY)}</span>
                   </div>
                   <div className="flex gap-10 mb-5">
                     <p>Faturamento mensal em cartão:</p>
@@ -662,14 +662,14 @@ export function App() {
                       <Input
                         placeholder="Digita Aqui"
                         className="max-w-20 h-6"
-                        value={taxaPosShield}
-                        onBlur={(e) => (e.target.value = taxaPosShield + "%")}
+                        value={taxaPosONEPAY}
+                        onBlur={(e) => (e.target.value = taxaPosONEPAY + "%")}
                         onChange={(e) => {
                           console.log(e);
                           const numericValue = Number(
                             e.target.value.replace(/[^a-zA-Z0-9\s]/g, "")
                           );
-                          setTaxaPosShield(numericValue);
+                          setTaxaPosONEPAY(numericValue);
                         }}
                       ></Input>
                     </div>
@@ -688,9 +688,9 @@ export function App() {
                 <CardFooter className="w-full grid place-content-center place-items-center">
                   {lucroComEficiencia > 100 ? (
                     <div className="w-full grid place-content-center border-2 rounded-2xl max-sm:w-10  ">
-                      <Card className="w-100 grid gap-5 bg-blue-950 text-amber-50 max-sm:w-80 ">
+                      <Card className="w-100 grid gap-5 bg-gradient-to-r from-[#1b4c7f] to-[#001937] text-amber-50 max-sm:w-80 ">
                         <CardHeader>
-                          <CardTitle>ECONOMIA COM A SHIELD:</CardTitle>
+                          <CardTitle>ECONOMIA COM A ONEPAY:</CardTitle>
                         </CardHeader>
                         <CardContent className="w-auto grid place-content-center  ">
                           <div className="flex justify-center gap-5 ">
@@ -741,7 +741,7 @@ export function App() {
                       </Card>
                     </div>
                   ) : null}
-                  <img className="w-40 " src={Logo} />
+                  <img className="w-50 " src={Logo} />
                 </CardFooter>
               </Card>
             </div>
