@@ -10,7 +10,7 @@ import {
 import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
 import Logo from "./assets/Logoredonda.png";
-import LogoONEPAY from "./assets/LogoredondaOne.png.png";
+import LogoONEPAY from "./assets/LogoredondaOne.png";
 interface CustoType {
   titulo: string | undefined;
   valor: number | null;
