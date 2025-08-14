@@ -465,19 +465,6 @@ export function App() {
             <div className="w-full mt-10 mb-10 grid place-content-center ">
               <div className="flex gap-3">
                 <h1 className=" text-amber-50 max-sm:text-[0.9rem]">
-                  Empreendedor MEI:{" "}
-                </h1>
-
-                <select className="text-neutral-400 " name="select">
-                  <option value="sim"> Sim</option>
-                  <option value="nao" selected>
-                    {" "}
-                    Não
-                  </option>
-                </select>
-              </div>
-              <div className="flex gap-3">
-                <h1 className=" text-amber-50 max-sm:text-[0.9rem]">
                   Anexo do Simples Nacional:
                 </h1>
                 <select
@@ -707,7 +694,7 @@ export function App() {
                         </CardHeader>
                         <CardContent className="w-auto grid place-content-center  ">
                           <div className="flex justify-center gap-5 ">
-                            <h1 className="text-[1rem] max-sm:text-[0.85rem]">
+                            <h1 className="text-[1rem] max-sm:text-[0.80rem]">
                               Aumento do lucro em:{" "}
                             </h1>
                             <strong className="text-[1.3rem] max-sm:text-[1.1rem]">
@@ -716,7 +703,7 @@ export function App() {
                           </div>
 
                           <div className="flex justify-center gap-5 ">
-                            <h1 className="text-[1.0rem] max-sm:text-[0.85rem]">
+                            <h1 className="text-[1.0rem] max-sm:text-[0.80rem]">
                               Ganho em 12 meses:
                             </h1>
                             <strong className="text-xl text-center max-sm:text-[1.1rem]">
@@ -725,6 +712,31 @@ export function App() {
                               )}
                             </strong>
                           </div>
+                          <Card className="mt-5 gap-0 ">
+                            <CardHeader>
+                              <CardTitle className="grid place-content-center">
+                                Economia dos Impostos:
+                              </CardTitle>
+                            </CardHeader>
+                            <div className="flex justify-center gap-5 ">
+                              <h1 className="text-[1rem] max-sm:text-[0.85rem]">
+                                Mensal:{" "}
+                              </h1>
+                              <strong className="text-[1.2rem] max-sm:text-[1.1rem]">
+                                {formattedNumber(impostoBruto - impostoBruto2)}
+                              </strong>
+                            </div>
+                            <div className="flex justify-center gap-5 ">
+                              <h1 className="text-[1rem] max-sm:text-[0.85rem]">
+                                Anual:{" "}
+                              </h1>
+                              <strong className="text-[1.2rem] max-sm:text-[1.1rem]">
+                                {formattedNumber(
+                                  (impostoBruto - impostoBruto2) * 12
+                                )}
+                              </strong>
+                            </div>
+                          </Card>
                         </CardContent>
                       </Card>
                     </div>
